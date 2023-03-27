@@ -29,4 +29,15 @@ class AuthService {
       rethrow;
     }
   }
+
+  Future<String?> logout() async {
+    try {
+      await auth.signOut();
+      return "You have successfully logged out";
+    } on FirebaseAuthException catch (error) {
+      return error.message;
+    } catch (error) {
+      rethrow;
+    }
+  }
 }

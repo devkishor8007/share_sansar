@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 import '../../widgets/custom.textfield.dart';
 
@@ -81,6 +84,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     content: Text('$data'),
                   ),
                 );
+                // context.go('/home');
               },
               child: const Text(
                 'Login',
@@ -89,7 +93,28 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             SizedBox(
               height: size.height * 0.06,
             ),
-            const Text('If you don\'t have an account'),
+            RichText(
+              text: TextSpan(
+                  text: 'If you don\'t have an account',
+                  style: GoogleFonts.lato(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '   Signup',
+                      style: GoogleFonts.lato(
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w700,
+                        fontSize:
+                            Theme.of(context).textTheme.titleMedium!.fontSize,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => context.go('/signup'),
+                    )
+                  ]),
+            ),
             SizedBox(
               height: size.height * 0.23,
             ),

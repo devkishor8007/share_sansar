@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:post_wall/data/home.dart';
+import 'package:post_wall/main.dart';
+import 'package:post_wall/pages/auth/login.page.dart';
+import 'package:post_wall/pages/auth/signup.page.dart';
+
+final goRouterProvider = Provider<GoRouter>((ref) {
+  return GoRouter(routes: [
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) =>
+          const FirebaseInitializeRoute(),
+    ),
+    GoRoute(
+      path: '/login',
+      builder: (BuildContext context, GoRouterState state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: '/signup',
+      builder: (BuildContext context, GoRouterState state) =>
+          const SignupPage(),
+    ),
+    GoRoute(
+      path: '/home',
+      builder: (BuildContext context, GoRouterState state) => const HomePage(),
+    ),
+  ]);
+});

@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 
@@ -45,7 +47,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
             Text(
               'We are happy that you are a part of our small world...!!',
               style: GoogleFonts.lato(
-                fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
+                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -93,6 +95,8 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                     content: Text('$data'),
                   ),
                 );
+                _email.clear();
+                _password.clear();
               },
               child: const Text(
                 'Signup',
@@ -101,7 +105,28 @@ class _SignupPageState extends ConsumerState<SignupPage> {
             SizedBox(
               height: size.height * 0.06,
             ),
-            const Text('If you have an account'),
+            RichText(
+              text: TextSpan(
+                  text: 'If you have an account',
+                  style: GoogleFonts.lato(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '   Login',
+                      style: GoogleFonts.lato(
+                        color: Colors.indigo,
+                        fontWeight: FontWeight.w700,
+                        fontSize:
+                            Theme.of(context).textTheme.titleMedium!.fontSize,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => context.go('/login'),
+                    )
+                  ]),
+            ),
             SizedBox(
               height: size.height * 0.1,
             ),
