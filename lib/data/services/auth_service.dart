@@ -3,12 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthService {
   static final FirebaseAuth auth = FirebaseAuth.instance;
 
+  Stream<User?> get authStateChanges => auth.authStateChanges();
+
   Future<String?> createAccount(
       {required String email, required String password}) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return 'Account Created';
+      return 'Thank you for signing up';
     } on FirebaseAuthException catch (error) {
       return error.message;
     } catch (error) {
@@ -20,7 +22,7 @@ class AuthService {
       {required String email, required String password}) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      return 'Success';
+      return 'You have successfully logged in!';
     } on FirebaseAuthException catch (error) {
       return error.message;
     } catch (error) {

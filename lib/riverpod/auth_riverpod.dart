@@ -6,3 +6,6 @@ import '../data/services/auth_service.dart';
 final firebaseProvider = Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService());
+
+final authStateProvider = StreamProvider<User?>(
+    (ref) => ref.read(authServiceProvider).authStateChanges);
