@@ -13,6 +13,11 @@ class AuthService {
           email: email, password: password);
       return 'Thank you for signing up';
     } on FirebaseAuthException catch (error) {
+      if (error.code == 'weak-password') {
+        return 'The password provided is too weak';
+      } else if (error.code == 'email-already-in-use') {
+        return "The account already exists for that email";
+      }
       return error.message;
     } catch (error) {
       rethrow;
@@ -25,6 +30,11 @@ class AuthService {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       return 'You have successfully logged in!';
     } on FirebaseAuthException catch (error) {
+      if (error.code == 'user-not-found') {
+        return 'No user found for that email.';
+      } else if (error.code == 'wrong-password') {
+        return 'Wrong password provided for that user';
+      }
       return error.message;
     } catch (error) {
       rethrow;
