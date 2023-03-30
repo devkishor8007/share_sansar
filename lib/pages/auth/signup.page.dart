@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 
+import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.textfield.dart';
 
 class SignupPage extends ConsumerStatefulWidget {
@@ -39,6 +40,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final auth = ref.watch(authServiceProvider);
+    final user = ref.watch(userRiverpod);
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -89,6 +91,13 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                   password: _password.text.trim(),
                 );
 
+                final uid = auth.user!.uid;
+
+                await user.createUser(
+                    uid: uid,
+                    email: _email.text.trim(),
+                    name: _name.text.trim());
+
                 if (!mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -97,6 +106,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                 );
                 _email.clear();
                 _password.clear();
+                context.go('/check-auth');
               },
               child: const Text(
                 'Signup',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/data/home.dart';
+import 'package:post_wall/pages/home.dart';
 import 'package:post_wall/pages/auth/login.page.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 

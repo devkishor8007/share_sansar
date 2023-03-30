@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:go_router/go_router.dart';
+import 'package:post_wall/pages/profile/profile.dart';
 
 import '../riverpod/auth_riverpod.dart';
 
 class HomePage extends ConsumerStatefulWidget {
+  // final String uid;
   const HomePage({super.key});
 
   @override
@@ -28,6 +31,20 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
               child: Text('Drawer header'),
             ),
+            ListTile(
+                title: const Text('Profile'),
+                leading: const Icon(Icons.person),
+                onTap: () {
+                  //  context.go('/');
+                  final data = auth.user;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          ProfilePage(data: data),
+                    ),
+                  );
+                }),
             ListTile(
               title: const Text('Logout'),
               leading: const Icon(Icons.logout),
