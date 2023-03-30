@@ -27,7 +27,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       path: '/home',
       builder: (BuildContext context, GoRouterState state) => const HomePage(),
     ),
-      GoRoute(
+    GoRoute(
       path: '/check-auth',
       builder: (BuildContext context, GoRouterState state) => const AuthCheck(),
     ),
