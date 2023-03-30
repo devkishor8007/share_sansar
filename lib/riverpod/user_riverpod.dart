@@ -19,5 +19,10 @@ final futureProvider =
 
 final userStreamRiverpod = StreamProvider.autoDispose<QuerySnapshot>((ref) {
   final firestore = ref.watch(firestoreProvider);
-  return firestore.collection('user').snapshots();
+  final auth = ref.watch(authServiceProvider);
+  final userId = auth.user!.uid;
+  return firestore
+      .collection('user')
+      .where('uid', isNotEqualTo: userId.toString())
+      .snapshots();
 });

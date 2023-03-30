@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:go_router/go_router.dart';
 
+import '../pages/unknown_friends.dart';
 import '../pages/profile/profile.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
@@ -34,6 +36,18 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => ProfilePage(data: data),
+                  ),
+                );
+              }),
+          ListTile(
+              title: const Text('Friends'),
+              leading: const Icon(Icons.person),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        const UnKnownFriendPage(),
                   ),
                 );
               }),
