@@ -24,7 +24,7 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
       body: otherFriends.when(
         data: (data) {
           if (data.docs.isEmpty) {
-            return const Center(child: Text("no"));
+            return const Center(child: Text("0 Unknown Friends"));
           }
           return ListView.builder(
             itemBuilder: (context, index) {

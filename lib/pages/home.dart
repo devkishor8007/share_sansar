@@ -86,7 +86,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: postList.when(
         data: (data) {
           if (data.docs.isEmpty) {
-            return const Center(child: Text("no"));
+            return const Center(child: Text("what's your thoughts"));
           }
           return ListView.builder(
             itemBuilder: (context, index) {
