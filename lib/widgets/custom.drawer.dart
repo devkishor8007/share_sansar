@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:go_router/go_router.dart';
 
 import '../pages/unknown_friends.dart';
@@ -27,18 +28,26 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             child: Text('Drawer header'),
           ),
           ListTile(
-              title: const Text('Profile'),
-              leading: const Icon(Icons.person),
-              onTap: () {
-                //  context.go('/');
-                final data = widget.auth.user;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => ProfilePage(data: data),
-                  ),
-                );
-              }),
+            title: const Text('Home'),
+            leading: const Icon(Icons.home),
+            onTap: () {
+              context.go('/home');
+            },
+          ),
+          ListTile(
+            title: const Text('Profile'),
+            leading: const Icon(Icons.person),
+            onTap: () {
+              //  context.go('/');
+              final data = widget.auth.user;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfilePage(data: data),
+                ),
+              );
+            },
+          ),
           ListTile(
               title: const Text('Friends'),
               leading: const Icon(Icons.person),

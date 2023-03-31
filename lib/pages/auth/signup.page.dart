@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 
 import '../../riverpod/user_riverpod.dart';
+import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
 
 class SignupPage extends ConsumerStatefulWidget {
@@ -72,19 +73,8 @@ class _SignupPageState extends ConsumerState<SignupPage> {
             SizedBox(
               height: size.height * 0.01,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.indigo,
-                minimumSize: Size(
-                  size.width * 0.3,
-                  size.height * 0.06,
-                ),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(4),
-                  ),
-                ),
-              ),
+            CustomButton(
+              hintText: 'Signup',
               onPressed: () async {
                 final data = await auth.createAccount(
                   email: _email.text.trim(),
@@ -93,24 +83,22 @@ class _SignupPageState extends ConsumerState<SignupPage> {
 
                 final uid = auth.user!.uid;
 
-                await user.createUser(
-                    uid: uid,
-                    email: _email.text.trim(),
-                    name: _name.text.trim());
-
-                if (!mounted) return;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('$data'),
-                  ),
-                );
+                await user
+                    .createUser(
+                        uid: uid,
+                        email: _email.text.trim(),
+                        name: _name.text.trim())
+                    .then((value) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('$data'),
+                    ),
+                  );
+                  context.go('/check-auth');
+                });
                 _email.clear();
                 _password.clear();
-                context.go('/check-auth');
               },
-              child: const Text(
-                'Signup',
-              ),
             ),
             SizedBox(
               height: size.height * 0.06,

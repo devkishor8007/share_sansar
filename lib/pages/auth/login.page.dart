@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
+import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -61,19 +62,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             SizedBox(
               height: size.height * 0.01,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.indigo,
-                minimumSize: Size(
-                  size.width * 0.3,
-                  size.height * 0.06,
-                ),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(4),
-                  ),
-                ),
-              ),
+            CustomButton(
+              hintText: 'Login',
               onPressed: () async {
                 final data = await auth.loginAccount(
                     email: _email.text.trim(), password: _password.text.trim());
@@ -86,9 +76,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 );
                 // context.go('/home');
               },
-              child: const Text(
-                'Login',
-              ),
             ),
             SizedBox(
               height: size.height * 0.06,
