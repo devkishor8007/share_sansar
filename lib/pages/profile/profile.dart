@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../riverpod/auth_riverpod.dart';
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.drawer.dart';
 
@@ -17,11 +16,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final dataIsProfile = ref.watch(futureProvider);
-    final auth = ref.watch(authServiceProvider);
+    // final auth = ref.watch(authServiceProvider);
     return Scaffold(
-      drawer: CustomDrawer(
-        auth: auth,
-      ),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
         title: Text(widget.data!.uid),
       ),

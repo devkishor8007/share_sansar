@@ -82,9 +82,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           Icons.add,
         ),
       ),
-      drawer: CustomDrawer(
-        auth: auth,
-      ),
+      drawer: const CustomDrawer(),
       body: postList.when(
         data: (data) {
           if (data.docs.isEmpty) {

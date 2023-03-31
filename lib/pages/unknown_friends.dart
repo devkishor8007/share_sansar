@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:post_wall/riverpod/user_riverpod.dart';
-
-import '../riverpod/auth_riverpod.dart';
 import '../widgets/custom.drawer.dart';
 
 class UnKnownFriendPage extends ConsumerStatefulWidget {
@@ -10,21 +8,19 @@ class UnKnownFriendPage extends ConsumerStatefulWidget {
   const UnKnownFriendPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _UnKnownFriendPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _UnKnownFriendPageState();
 }
 
 class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
   @override
   Widget build(BuildContext context) {
-    final auth = ref.watch(authServiceProvider);
     final otherFriends = ref.watch(userStreamRiverpod);
     return Scaffold(
       appBar: AppBar(
         title: const Text('friend'),
       ),
-      drawer: CustomDrawer(
-        auth: auth,
-      ),
+      drawer: const CustomDrawer(),
       body: otherFriends.when(
         data: (data) {
           if (data.docs.isEmpty) {
