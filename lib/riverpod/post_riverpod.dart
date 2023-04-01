@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:post_wall/data/models/post.model.dart';
 import 'package:post_wall/data/services/post_service.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 
@@ -15,4 +16,19 @@ final postStreamRiverpod = StreamProvider.autoDispose<QuerySnapshot>((ref) {
       .collection('posts')
       .where('postBy', isEqualTo: userId)
       .snapshots();
+});
+
+final feedsPostStreamRiverpod =
+    StreamProvider.autoDispose<List<PostModel>>((ref) {
+  final firestore = ref.watch(firestoreProvider);
+  return firestore
+      .collection('posts')
+      .orderBy('date', descending: true)
+      .snapshots()
+      .map((querySnapshot) {
+    return querySnapshot.docs.map((doc) {
+      final post = PostModel.fromJson(doc);
+      return post;
+    }).toList();
+  });
 });

@@ -4,16 +4,16 @@ class PostModel {
   String? id;
   String? title;
   String? description;
-  String? postby;
+  String? postBy;
   Timestamp? date;
-  String? uid;
+  bool isPrivate;
   PostModel({
     this.id,
     this.title,
     this.description,
-    this.postby,
+    this.postBy,
     this.date,
-    this.uid,
+    this.isPrivate = false,
   });
 
   factory PostModel.fromJson(DocumentSnapshot snap) {
@@ -21,9 +21,20 @@ class PostModel {
       id: snap.id,
       title: snap['title'],
       description: snap['description'],
-      postby: snap['postby'],
+      postBy: snap['postBy'],
       date: snap['date'],
-      uid: snap['uid'],
+      isPrivate: snap['isPrivate'],
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'postBy': postBy,
+      'title': title,
+      'description': description,
+      'date': Timestamp.now(),
+      'id': id,
+      'isPrivate': isPrivate,
+    };
   }
 }

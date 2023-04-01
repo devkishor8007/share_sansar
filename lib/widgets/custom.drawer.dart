@@ -24,7 +24,7 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.indigo,
             ),
             child: Text('Drawer header'),
           ),
@@ -33,6 +33,13 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             leading: const Icon(Icons.home),
             onTap: () {
               context.go('/home');
+            },
+          ),
+          ListTile(
+            title: const Text('Feeds'),
+            leading: const Icon(Icons.timeline_rounded),
+            onTap: () {
+              context.go('/feeds');
             },
           ),
           ListTile(

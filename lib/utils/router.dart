@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:post_wall/app.dart';
+import 'package:post_wall/pages/feeds.dart';
 import 'package:post_wall/pages/home.dart';
 import 'package:post_wall/main.dart';
 import 'package:post_wall/pages/auth/login.page.dart';
@@ -30,6 +31,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     GoRoute(
       path: '/check-auth',
       builder: (BuildContext context, GoRouterState state) => const AuthCheck(),
+    ),
+    GoRoute(
+      path: '/feeds',
+      builder: (BuildContext context, GoRouterState state) =>
+          const FeedsScreen(),
     ),
   ]);
 });

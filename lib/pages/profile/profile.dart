@@ -34,7 +34,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             );
           },
           error: (error, stac) => Text(" $error $stac"),
-          loading: () => const CircularProgressIndicator()),
+          loading: () => const LinearProgressIndicator()),
     );
   }
 }

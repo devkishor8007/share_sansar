@@ -31,7 +31,7 @@ class MyApp extends ConsumerWidget {
       title: 'Flutter Demo',
       routerConfig: goRouter,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
       ),
     );
   }
