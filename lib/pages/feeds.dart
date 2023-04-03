@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/data/models/post.model.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 import 'package:post_wall/widgets/custom.appbar.dart';
+import 'package:post_wall/widgets/custom.text.dart';
 
 import '../riverpod/post_riverpod.dart';
 import '../widgets/custom.drawer.dart';
@@ -23,7 +23,9 @@ class _FeedsScreenState extends ConsumerState<FeedsScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        appBar: const CustomAppBar(appBarText: 'Feeds',),
+        appBar: const CustomAppBar(
+          appBarText: 'Feeds',
+        ),
         drawer: const CustomDrawer(),
         body: feeds.when(
           data: (feedData) {
@@ -49,47 +51,39 @@ class _FeedsScreenState extends ConsumerState<FeedsScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              post.title.toString(),
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium!
-                                      .fontSize),
+                            CustomText(
+                              text: post.title.toString(),
+                              fontWeight: FontWeight.w800,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .fontSize,
                             ),
                             auth.user!.uid == post.postBy
                                 ? Align(
                                     alignment: Alignment.centerRight,
-                                    child: Text(
-                                      'author'.toUpperCase(),
-                                      style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                    child: CustomText(
+                                      text: 'author'.toUpperCase(),
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   )
                                 : Align(
                                     alignment: Alignment.centerRight,
-                                    child: Text(
-                                      'contributor'.toUpperCase(),
-                                      style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                    child: CustomText(
+                                      text: 'contributor'.toUpperCase(),
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                             SizedBox(
                               height: size.height * 0.015,
                             ),
-                            Text(
-                              post.description.toString(),
-                              style: GoogleFonts.lato(),
+                            CustomText(
+                              text: post.description.toString(),
                             ),
                             const Spacer(),
-                            Text(
-                              formattedDate,
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.w600,
-                              ),
+                            CustomText(
+                              text: formattedDate,
+                              fontWeight: FontWeight.w600,
                             ),
                           ],
                         ),
@@ -100,7 +94,7 @@ class _FeedsScreenState extends ConsumerState<FeedsScreen> {
               },
             );
           },
-          error: (error, stac) => Text(" $error"),
+          error: (error, stac) => Text("$error"),
           loading: () => const CircularProgressIndicator(),
         ),
       ),

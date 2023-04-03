@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:post_wall/widgets/custom.text.dart';
 import 'package:post_wall/widgets/custom.textfield.dart';
 import 'package:uuid/uuid.dart';
-// import 'package:go_router/go_router.dart';
 
 import '../riverpod/auth_riverpod.dart';
 import '../riverpod/post_riverpod.dart';
@@ -21,6 +20,8 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   late final TextEditingController _title;
   late final TextEditingController _description;
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -50,51 +51,68 @@ class _HomePageState extends ConsumerState<HomePage> {
         onPressed: () {
           showModalBottomSheet(
               context: context,
-              builder: (c) {
+              builder: (BuildContext context) {
                 return SizedBox(
                   height: size.height / 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: size.height * 0.01,
-                      ),
-                      Text(
-                        'Share your thoughts...',
-                        style: GoogleFonts.lato(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: size.height * 0.01,
+                        ),
+                        CustomText(
+                          text: 'Share your thoughts...',
                           fontSize:
                               Theme.of(context).textTheme.titleMedium!.fontSize,
                           fontWeight: FontWeight.w800,
                         ),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.009,
-                      ),
-                      CustomTextField(
-                          controller: _title, hintText: 'title....'),
-                      CustomTextField(
-                          controller: _description,
-                          hintText: 'description....'),
-                      CustomButton(
-                        hintText: 'Submit',
-                        onPressed: () async {
-                          const uuid = Uuid();
-                          final id = uuid.v4();
-                          await post
-                              .createPost(
-                                id: id,
-                                title: _title.text,
-                                postBy: auth.user!.uid,
-                                description: _description.text,
-                              )
-                              .then((value) => {
-                                    _title.clear(),
-                                    _description.clear(),
-                                    Navigator.of(context).pop()
-                                  });
-                        },
-                      ),
-                    ],
+                        SizedBox(
+                          height: size.height * 0.009,
+                        ),
+                        CustomTextField(
+                          controller: _title,
+                          hintText: 'title....',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter title';
+                            }
+                            return null;
+                          },
+                        ),
+                        CustomTextField(
+                            controller: _description,
+                            hintText: 'description....',
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter description';
+                              }
+                              return null;
+                            }),
+                        CustomButton(
+                          hintText: 'Submit',
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              const uuid = Uuid();
+                              final id = uuid.v4();
+                              await post
+                                  .createPost(
+                                    id: id,
+                                    title: _title.text,
+                                    postBy: auth.user!.uid,
+                                    description: _description.text,
+                                  )
+                                  .then((value) => {
+                                        _title.clear(),
+                                        _description.clear(),
+                                        Navigator.of(context).pop()
+                                      });
+                            }
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 );
               });
@@ -130,37 +148,31 @@ class _HomePageState extends ConsumerState<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            data.docs[index]['title'],
-                            style: GoogleFonts.lato(
-                                fontWeight: FontWeight.w800,
-                                fontSize: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .fontSize),
+                          CustomText(
+                            text: data.docs[index]['title'],
+                            fontWeight: FontWeight.w800,
+                            fontSize: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .fontSize,
                           ),
                           Align(
                             alignment: Alignment.centerRight,
-                            child: Text(
-                              'author'.toUpperCase(),
-                              style: GoogleFonts.lato(
-                                fontWeight: FontWeight.w600,
-                              ),
+                            child: CustomText(
+                              text: 'author'.toUpperCase(),
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           SizedBox(
                             height: size.height * 0.015,
                           ),
-                          Text(
-                            data.docs[index]['description'].toString(),
-                            style: GoogleFonts.lato(),
+                          CustomText(
+                            text: data.docs[index]['description'].toString(),
                           ),
                           const Spacer(),
-                          Text(
-                            formattedDate,
-                            style: GoogleFonts.lato(
-                              fontWeight: FontWeight.w600,
-                            ),
+                          CustomText(
+                            text: formattedDate,
+                            fontWeight: FontWeight.w600,
                           ),
                         ],
                       ),

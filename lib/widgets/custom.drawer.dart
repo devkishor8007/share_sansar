@@ -6,6 +6,7 @@ import 'package:post_wall/riverpod/auth_riverpod.dart';
 
 import '../pages/profile/profile.dart';
 import '../pages/unknown_friends.dart';
+import 'custom.text.dart';
 // import '../pages/profile/profile.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
@@ -27,24 +28,24 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             decoration: BoxDecoration(
               color: Colors.indigo,
             ),
-            child: Text('Drawer header'),
+            child: CustomText(text:'Drawer header'),
           ),
           ListTile(
-            title: const Text('Home'),
+            title: const CustomText(text:'Home'),
             leading: const Icon(Icons.home),
             onTap: () {
               context.go('/home');
             },
           ),
           ListTile(
-            title: const Text('Feeds'),
+            title: const CustomText(text:'Feeds'),
             leading: const Icon(Icons.timeline_rounded),
             onTap: () {
               context.go('/feeds');
             },
           ),
           ListTile(
-            title: const Text('Profile'),
+            title: const CustomText(text:'Profile'),
             leading: const Icon(Icons.person),
             onTap: () {
               //  context.go('/');
@@ -58,7 +59,7 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             },
           ),
           ListTile(
-              title: const Text('Friends'),
+              title: const CustomText(text:'Friends'),
               leading: const Icon(Icons.person),
               onTap: () {
                 Navigator.push(
@@ -70,14 +71,14 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
                 );
               }),
           ListTile(
-            title: const Text('Logout'),
+            title: const CustomText(text:'Logout'),
             leading: const Icon(Icons.logout),
             onTap: () async {
               await auth.logout().then(
                 (value) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('$value'),
+                      content: CustomText(text:'$value'),
                     ),
                   );
                   context.go('/check-auth');
