@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/data/models/post.model.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
+import 'package:post_wall/widgets/custom.appbar.dart';
 
 import '../riverpod/post_riverpod.dart';
 import '../widgets/custom.drawer.dart';
@@ -22,9 +23,7 @@ class _FeedsScreenState extends ConsumerState<FeedsScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Feeds'),
-        ),
+        appBar: const CustomAppBar(appBarText: 'Feeds',),
         drawer: const CustomDrawer(),
         body: feeds.when(
           data: (feedData) {

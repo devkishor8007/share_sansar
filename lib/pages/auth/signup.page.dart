@@ -7,6 +7,7 @@ import 'package:post_wall/riverpod/auth_riverpod.dart';
 
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.button.dart';
+import '../../widgets/custom.text.dart';
 import '../../widgets/custom.textfield.dart';
 
 class SignupPage extends ConsumerStatefulWidget {
@@ -47,11 +48,9 @@ class _SignupPageState extends ConsumerState<SignupPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'We are happy that you are a part of our small world...!!',
-              style: GoogleFonts.lato(
-                fontSize: 18,
-              ),
+            CustomText(
+              text: 'We are happy that you are a part of our small world...!!',
+              fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
             ),
             SizedBox(
               height: size.height * 0.01,

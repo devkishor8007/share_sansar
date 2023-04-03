@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/user_riverpod.dart';
+import 'package:post_wall/widgets/custom.appbar.dart';
 import '../widgets/custom.drawer.dart';
 
 class UnKnownFriendPage extends ConsumerStatefulWidget {
@@ -17,9 +19,7 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
   Widget build(BuildContext context) {
     final otherFriends = ref.watch(userStreamRiverpod);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('friend'),
-      ),
+      appBar: const CustomAppBar(appBarText: 'UnKnown-Friend'),
       drawer: const CustomDrawer(),
       body: otherFriends.when(
         data: (data) {
@@ -28,7 +28,12 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
           }
           return ListView.builder(
             itemBuilder: (context, index) {
-              return Text(data.docs[index]['email']);
+              return ListTile(
+                title: Text(
+                  data.docs[index]['email'],
+                  style: GoogleFonts.lato(),
+                ),
+              );
             },
             itemCount: data.docs.length,
           );

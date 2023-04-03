@@ -4,8 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
 // import 'package:go_router/go_router.dart';
 
-import '../pages/unknown_friends.dart';
 import '../pages/profile/profile.dart';
+import '../pages/unknown_friends.dart';
+// import '../pages/profile/profile.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
   const CustomDrawer({super.key});

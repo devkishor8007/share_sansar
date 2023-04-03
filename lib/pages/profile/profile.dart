@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:post_wall/widgets/custom.appbar.dart';
+import 'package:post_wall/widgets/custom.text.dart';
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.drawer.dart';
 
@@ -16,20 +18,21 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final dataIsProfile = ref.watch(futureProvider);
-    // final auth = ref.watch(authServiceProvider);
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: AppBar(
-        title: Text(widget.data!.uid),
-      ),
+      appBar: CustomAppBar(appBarText: widget.data!.uid),
       body: dataIsProfile.when(
           data: (abc) {
             Map<String, dynamic> data = abc!.data() as Map<String, dynamic>;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(data['email']),
-                Text(data['name']),
+                CustomText(
+                  text: data['email'],
+                ),
+                CustomText(
+                  text: data['name'],
+                ),
               ],
             );
           },

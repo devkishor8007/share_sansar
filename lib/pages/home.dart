@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 
 import '../riverpod/auth_riverpod.dart';
 import '../riverpod/post_riverpod.dart';
+import '../widgets/custom.appbar.dart';
 import '../widgets/custom.button.dart';
 import '../widgets/custom.drawer.dart';
 
@@ -33,7 +34,6 @@ class _HomePageState extends ConsumerState<HomePage> {
     super.dispose();
     _title.dispose();
     _description.dispose();
-    // _postBy.dispose();
   }
 
   @override
@@ -43,43 +43,11 @@ class _HomePageState extends ConsumerState<HomePage> {
     final postList = ref.watch(postStreamRiverpod);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Post'),
+      appBar: const CustomAppBar(
+        appBarText: 'Your Post',
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //   showDialog(
-          //       context: context,
-          //       builder: (BuildContext context) {
-          //         return AlertDialog(
-          //           title: const Text('Share your thoughts...'),
-          //           actions: [
-          //             CustomTextField(controller: _title, hintText: 'title....'),
-          //             CustomTextField(
-          //                 controller: _description, hintText: 'description....'),
-          //             CustomButton(
-          //               hintText: 'Submit',
-          //               onPressed: () async {
-          //                 const uuid = Uuid();
-          //                 final id = uuid.v4();
-          //                 await post
-          //                     .createPost(
-          //                       id: id,
-          //                       title: _title.text,
-          //                       postBy: auth.user!.uid,
-          //                       description: _description.text,
-          //                     )
-          //                     .then((value) => {
-          //                           _title.clear(),
-          //                           _description.clear(),
-          //                           Navigator.of(context).pop()
-          //                         });
-          //               },
-          //             ),
-          //           ],
-          //         );
-          //       });
-
           showModalBottomSheet(
               context: context,
               builder: (c) {

@@ -7,6 +7,9 @@ import 'package:post_wall/pages/home.dart';
 import 'package:post_wall/main.dart';
 import 'package:post_wall/pages/auth/login.page.dart';
 import 'package:post_wall/pages/auth/signup.page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../pages/profile/profile.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(routes: [
@@ -36,6 +39,12 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       path: '/feeds',
       builder: (BuildContext context, GoRouterState state) =>
           const FeedsScreen(),
+    ),
+    GoRoute(
+      path: '/profile',
+      builder: (BuildContext context, GoRouterState state) => ProfilePage(
+        data: state.params['data'] as User?,
+      ),
     ),
   ]);
 });

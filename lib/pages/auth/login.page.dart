@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
+import 'package:post_wall/widgets/custom.text.dart';
 import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
 
@@ -41,11 +42,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'Make a shine with us...!!',
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
-              ),
+            CustomText(
+              text: 'Make a shine with us...!!',
+              fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
             ),
             SizedBox(
               height: size.height * 0.01,
