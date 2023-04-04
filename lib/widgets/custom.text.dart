@@ -5,9 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomText extends ConsumerWidget {
   final String text;
   final double? fontSize;
+  final Color? color;
   final FontWeight? fontWeight;
   const CustomText(
-      {super.key, required this.text, this.fontSize, this.fontWeight});
+      {super.key,
+      required this.text,
+      this.fontSize,
+      this.fontWeight,
+      this.color});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +21,7 @@ class CustomText extends ConsumerWidget {
       style: GoogleFonts.lato(
         fontSize: fontSize,
         fontWeight: fontWeight,
+        color: color,
       ),
     );
   }

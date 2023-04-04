@@ -24,28 +24,39 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.indigo,
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              // color: Colors.indigo,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                  'https://images.unsplash.com/photo-1680000827936-e5f64dedb249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Q0R3dXdYSkFiRXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+                ),
+              ),
             ),
-            child: CustomText(text:'Drawer header'),
+            child: CustomText(
+              text: 'POST WALL',
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
+            ),
           ),
           ListTile(
-            title: const CustomText(text:'Home'),
+            title: const CustomText(text: 'Home'),
             leading: const Icon(Icons.home),
             onTap: () {
               context.go('/home');
             },
           ),
           ListTile(
-            title: const CustomText(text:'Feeds'),
+            title: const CustomText(text: 'Feeds'),
             leading: const Icon(Icons.timeline_rounded),
             onTap: () {
               context.go('/feeds');
             },
           ),
           ListTile(
-            title: const CustomText(text:'Profile'),
+            title: const CustomText(text: 'Profile'),
             leading: const Icon(Icons.person),
             onTap: () {
               //  context.go('/');
@@ -59,8 +70,8 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             },
           ),
           ListTile(
-              title: const CustomText(text:'Friends'),
-              leading: const Icon(Icons.person),
+              title: const CustomText(text: 'Friends'),
+              leading: const Icon(Icons.people),
               onTap: () {
                 Navigator.push(
                   context,
@@ -71,14 +82,14 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
                 );
               }),
           ListTile(
-            title: const CustomText(text:'Logout'),
+            title: const CustomText(text: 'Logout'),
             leading: const Icon(Icons.logout),
             onTap: () async {
               await auth.logout().then(
                 (value) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: CustomText(text:'$value'),
+                      content: CustomText(text: '$value'),
                     ),
                   );
                   context.go('/check-auth');

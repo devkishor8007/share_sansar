@@ -63,7 +63,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           height: size.height * 0.01,
                         ),
                         CustomText(
-                          text: 'Share your thoughts...',
+                          text: 'What you make feel better...!!',
                           fontSize:
                               Theme.of(context).textTheme.titleMedium!.fontSize,
                           fontWeight: FontWeight.w800,
@@ -125,7 +125,12 @@ class _HomePageState extends ConsumerState<HomePage> {
       body: postList.when(
         data: (data) {
           if (data.docs.isEmpty) {
-            return const Center(child: Text("what's your thoughts"));
+            return Center(
+                child: CustomText(
+              text: 'Share your thoughts...!!',
+              fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+              fontWeight: FontWeight.w800,
+            ));
           }
           return ListView.builder(
             itemCount: data.docs.length,
