@@ -18,20 +18,42 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final dataIsProfile = ref.watch(futureProvider);
+    Size size = MediaQuery.of(context).size;
+    // print(widget.data!.uid);
     return Scaffold(
       drawer: const CustomDrawer(),
-      appBar: CustomAppBar(appBarText: widget.data!.uid),
+      appBar: const CustomAppBar(appBarText: 'Profile'),
       body: dataIsProfile.when(
           data: (abc) {
             Map<String, dynamic> data = abc!.data() as Map<String, dynamic>;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
-                  text: data['email'],
-                ),
-                CustomText(
-                  text: data['name'],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    elevation: 7,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        17,
+                      ),
+                    ),
+                    child: SizedBox(
+                      width: size.width,
+                      height: size.height * 0.2,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            text: data['name'],
+                          ),
+                          CustomText(
+                            text: data['email'],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ],
             );
