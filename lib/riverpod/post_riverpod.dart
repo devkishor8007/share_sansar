@@ -32,3 +32,24 @@ final feedsPostStreamRiverpod =
     }).toList();
   });
 });
+
+final subCollectionTest = StreamProvider.autoDispose
+    .family<QuerySnapshot<Map<String, dynamic>>, String>((ref, postId) {
+  return FirebaseFirestore.instance
+      .collection('posts')
+      .doc(postId)
+      .collection('user')
+      .snapshots();
+});
+
+final subCollectionTestIII = StreamProvider.autoDispose<List<PostModel>>((ref) {
+  return FirebaseFirestore.instance
+      .collectionGroup('posts')
+      .where('postBy', isEqualTo: 'p59rFrD2jMTMtWX6dfBPBghiBIu1')
+      .snapshots()
+      .map((event) {
+    return event.docs.map((e) {
+      return PostModel.fromJson(e);
+    }).toList();
+  });
+});

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:post_wall/riverpod/user_riverpod.dart';
 import 'package:post_wall/widgets/custom.appbar.dart';
 import '../widgets/custom.drawer.dart';
 
 class UnKnownFriendPage extends ConsumerStatefulWidget {
-  // final String uid;
   const UnKnownFriendPage({super.key});
 
   @override
@@ -27,18 +25,17 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
             return const Center(child: Text("0 Unknown Friends"));
           }
           return ListView.builder(
+            itemCount: data.docs.length,
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text(
                   data.docs[index]['email'],
-                  style: GoogleFonts.lato(),
                 ),
               );
             },
-            itemCount: data.docs.length,
           );
         },
-        error: (error, stac) => Text(" $error $stac"),
+        error: (error, stac) => Text(" $error"),
         loading: () => const CircularProgressIndicator(),
       ),
     );

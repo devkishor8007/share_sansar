@@ -17,7 +17,8 @@ Future<void> main() async {
 
 final firebaseInitProvider = FutureProvider<FirebaseApp>((ref) async {
   return await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 });
 
 class MyApp extends ConsumerWidget {
