@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:post_wall/pages/unknown-friend/friend_detail.dart';
 import 'package:post_wall/riverpod/user_riverpod.dart';
 import 'package:post_wall/widgets/custom.appbar.dart';
-import '../widgets/custom.drawer.dart';
+import '../../widgets/custom.border.dart';
+import '../../widgets/custom.drawer.dart';
 
 class UnKnownFriendPage extends ConsumerStatefulWidget {
   const UnKnownFriendPage({super.key});
@@ -27,10 +29,24 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
           return ListView.builder(
             itemCount: data.docs.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(
-                  data.docs[index]['email'],
-                ),
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    (MaterialPageRoute(
+                      builder: (BuildContext context) => UnknownFriendDetail(
+                        userId: data.docs[index]['uid'],
+                      ),
+                    )),
+                  );
+                },
+                child: CustomWidgetPage(data: data.docs[index]),
+
+                // ListTile(
+                //   title: Text(
+                //     data.docs[index]['email'],
+                //   ),
+                // ),
               );
             },
           );

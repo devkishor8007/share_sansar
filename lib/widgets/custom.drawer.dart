@@ -5,7 +5,7 @@ import 'package:post_wall/riverpod/auth_riverpod.dart';
 // import 'package:go_router/go_router.dart';
 
 import '../pages/profile/profile.dart';
-import '../pages/unknown_friends.dart';
+import '../pages/unknown-friend/unknown_friends.dart';
 import 'custom.text.dart';
 // import '../pages/profile/profile.dart';
 

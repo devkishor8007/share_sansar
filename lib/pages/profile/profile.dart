@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:post_wall/widgets/custom.appbar.dart';
-import 'package:post_wall/widgets/custom.text.dart';
+import 'package:post_wall/widgets/custom.border.dart';
+// import 'package:post_wall/widgets/custom.text.dart';
+import '../../riverpod/auth_riverpod.dart';
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.drawer.dart';
 
@@ -17,44 +19,48 @@ class ProfilePage extends ConsumerStatefulWidget {
 class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final dataIsProfile = ref.watch(futureProvider);
-    Size size = MediaQuery.of(context).size;
+    final auth = ref.watch(authServiceProvider);
+    final dataIsProfile = ref.watch(futureProvider(auth.user!.uid));
+    // Size size = MediaQuery.of(context).size;
     // print(widget.data!.uid);
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const CustomAppBar(appBarText: 'Profile'),
       body: dataIsProfile.when(
           data: (abc) {
-            Map<String, dynamic> data = abc!.data() as Map<String, dynamic>;
+            Map<String, dynamic> data = abc.data() as Map<String, dynamic>;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    elevation: 7,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        17,
-                      ),
-                    ),
-                    child: SizedBox(
-                      width: size.width,
-                      height: size.height * 0.2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomText(
-                            text: data['name'],
-                          ),
-                          CustomText(
-                            text: data['email'],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                CustomWidgetPage(
+                  data: data,
+                )
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Card(
+                //     elevation: 7,
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(
+                //         17,
+                //       ),
+                //     ),
+                //     child: SizedBox(
+                //       width: size.width,
+                //       height: size.height * 0.2,
+                //       child: Column(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: [
+                //           CustomText(
+                //             text: data['name'],
+                //           ),
+                //           CustomText(
+                //             text: data['email'],
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             );
           },

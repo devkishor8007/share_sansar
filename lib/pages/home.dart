@@ -41,7 +41,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final auth = ref.watch(authServiceProvider);
     final post = ref.watch(postRiverpod);
-    final postList = ref.watch(postStreamRiverpod);
+    final postList = ref.watch(postStreamRiverpod(auth.user!.uid));
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const CustomAppBar(
