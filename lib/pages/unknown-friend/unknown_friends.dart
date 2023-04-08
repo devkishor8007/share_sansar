@@ -18,6 +18,7 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
   @override
   Widget build(BuildContext context) {
     final otherFriends = ref.watch(userStreamRiverpod);
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const CustomAppBar(appBarText: 'UnKnown-Friend'),
       drawer: const CustomDrawer(),
@@ -40,7 +41,10 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
                     )),
                   );
                 },
-                child: CustomWidgetPage(data: data.docs[index]),
+                child: CustomWidgetPage(
+                  data: data.docs[index],
+                  height: size.height * 0.13,
+                ),
 
                 // ListTile(
                 //   title: Text(

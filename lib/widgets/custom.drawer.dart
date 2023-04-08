@@ -29,9 +29,10 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
               // color: Colors.indigo,
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                  'https://images.unsplash.com/photo-1680000827936-e5f64dedb249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Q0R3dXdYSkFiRXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-                ),
+                image: AssetImage('assets/drawer-image.png'),
+                // NetworkImage(
+                //   'https://images.unsplash.com/photo-1680000827936-e5f64dedb249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Q0R3dXdYSkFiRXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
+                // ),
               ),
             ),
             child: CustomText(

@@ -4,8 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'custom.text.dart';
 
 class CustomWidgetPage extends ConsumerWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final data;
-  const CustomWidgetPage({super.key, required this.data});
+  final double? height;
+  const CustomWidgetPage({super.key, required this.data, this.height});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +23,7 @@ class CustomWidgetPage extends ConsumerWidget {
         ),
         child: SizedBox(
           width: size.width,
-          height: size.height * 0.2,
+          height: height ?? size.height * 0.2,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
