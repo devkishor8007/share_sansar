@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
-// import 'package:go_router/go_router.dart';
 
 import '../pages/profile/profile.dart';
 import 'custom.text.dart';
-// import '../pages/profile/profile.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
   const CustomDrawer({super.key});
