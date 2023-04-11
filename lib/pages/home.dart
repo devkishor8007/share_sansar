@@ -82,14 +82,15 @@ class _HomePageState extends ConsumerState<HomePage> {
                           },
                         ),
                         CustomTextField(
-                            controller: _description,
-                            hintText: 'description....',
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter description';
-                              }
-                              return null;
-                            }),
+                          controller: _description,
+                          hintText: 'description....',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter description';
+                            }
+                            return null;
+                          },
+                        ),
                         CustomButton(
                           hintText: 'Submit',
                           onPressed: () async {

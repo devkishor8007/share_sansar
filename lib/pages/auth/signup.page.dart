@@ -22,6 +22,8 @@ class _SignupPageState extends ConsumerState<SignupPage> {
   late final TextEditingController _password;
   late final TextEditingController _name;
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -45,89 +47,113 @@ class _SignupPageState extends ConsumerState<SignupPage> {
     final user = ref.watch(userRiverpod);
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            CustomText(
-              text: 'We are happy that you are a part of our small world...!!',
-              fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            CustomTextField(
-              controller: _name,
-              hintText: 'Enter your name..',
-              // obscureText: true,
-            ),
-            CustomTextField(
-              controller: _email,
-              hintText: 'Enter your email..',
-            ),
-            CustomTextField(
-              controller: _password,
-              hintText: 'Enter your password..',
-              obscureText: true,
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            CustomButton(
-              hintText: 'Signup',
-              onPressed: () async {
-                final data = await auth.createAccount(
-                  email: _email.text.trim(),
-                  password: _password.text.trim(),
-                );
+        body: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomText(
+                text:
+                    'We are happy that you are a part of our small world...!!',
+                fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              CustomTextField(
+                controller: _name,
+                hintText: 'Enter your name..',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+              ),
+              CustomTextField(
+                controller: _email,
+                hintText: 'Enter your email..',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+              ),
+              CustomTextField(
+                controller: _password,
+                hintText: 'Enter your password..',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+                obscureText: true,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              CustomButton(
+                hintText: 'Signup',
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final data = await auth.createAccount(
+                      email: _email.text.trim(),
+                      password: _password.text.trim(),
+                    );
 
-                final uid = auth.user!.uid;
+                    final uid = auth.user!.uid;
 
-                await user
-                    .createUser(
-                        uid: uid,
-                        email: _email.text.trim(),
-                        name: _name.text.trim())
-                    .then((value) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('$data'),
+                    await user
+                        .createUser(
+                            uid: uid,
+                            email: _email.text.trim(),
+                            name: _name.text.trim())
+                        .then((value) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('$data'),
+                        ),
+                      );
+                      context.go('/check-auth');
+                    });
+                    _email.clear();
+                    _password.clear();
+                  }
+                },
+              ),
+              SizedBox(
+                height: size.height * 0.06,
+              ),
+              RichText(
+                text: TextSpan(
+                    text: 'If you have an account',
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontSize:
+                          Theme.of(context).textTheme.titleMedium!.fontSize,
                     ),
-                  );
-                  context.go('/check-auth');
-                });
-                _email.clear();
-                _password.clear();
-              },
-            ),
-            SizedBox(
-              height: size.height * 0.06,
-            ),
-            RichText(
-              text: TextSpan(
-                  text: 'If you have an account',
-                  style: GoogleFonts.lato(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '   Login',
-                      style: GoogleFonts.lato(
-                        color: Colors.indigo,
-                        fontWeight: FontWeight.w700,
-                        fontSize:
-                            Theme.of(context).textTheme.titleMedium!.fontSize,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => context.go('/login'),
-                    )
-                  ]),
-            ),
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-          ],
+                    children: [
+                      TextSpan(
+                        text: '   Login',
+                        style: GoogleFonts.lato(
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.w700,
+                          fontSize:
+                              Theme.of(context).textTheme.titleMedium!.fontSize,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => context.go('/login'),
+                      )
+                    ]),
+              ),
+              SizedBox(
+                height: size.height * 0.001,
+              ),
+            ],
+          ),
         ),
       ),
     );

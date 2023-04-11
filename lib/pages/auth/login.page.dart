@@ -19,6 +19,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   late final TextEditingController _email;
   late final TextEditingController _password;
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -39,72 +41,90 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     final auth = ref.watch(authServiceProvider);
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            CustomText(
-              text: 'Make a shine with us...!!',
-              fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            CustomTextField(
-              controller: _email,
-              hintText: 'Enter your email..',
-            ),
-            CustomTextField(
-              controller: _password,
-              hintText: 'Enter your password..',
-              obscureText: true,
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            CustomButton(
-              hintText: 'Login',
-              onPressed: () async {
-                final data = await auth.loginAccount(
-                    email: _email.text.trim(), password: _password.text.trim());
+        body: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomText(
+                text: 'Make a shine with us...!!',
+                fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              CustomTextField(
+                controller: _email,
+                hintText: 'Enter your email..',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+              ),
+              CustomTextField(
+                controller: _password,
+                hintText: 'Enter your password..',
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              CustomButton(
+                hintText: 'Login',
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final data = await auth.loginAccount(
+                        email: _email.text.trim(),
+                        password: _password.text.trim());
 
-                if (!mounted) return;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('$data'),
-                  ),
-                );
-                // context.go('/home');
-              },
-            ),
-            SizedBox(
-              height: size.height * 0.06,
-            ),
-            RichText(
-              text: TextSpan(
-                  text: 'If you don\'t have an account',
-                  style: GoogleFonts.lato(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: '   Signup',
-                      style: GoogleFonts.lato(
-                        color: Colors.indigo,
-                        fontWeight: FontWeight.w700,
-                        fontSize:
-                            Theme.of(context).textTheme.titleMedium!.fontSize,
+                    if (!mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('$data'),
                       ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => context.go('/signup'),
-                    )
-                  ]),
-            ),
-            SizedBox(
-              height: size.height * 0.23,
-            ),
-          ],
+                    );
+                  }
+                },
+              ),
+              SizedBox(
+                height: size.height * 0.06,
+              ),
+              RichText(
+                text: TextSpan(
+                    text: 'If you don\'t have an account',
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontSize:
+                          Theme.of(context).textTheme.titleMedium!.fontSize,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '   Signup',
+                        style: GoogleFonts.lato(
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.w700,
+                          fontSize:
+                              Theme.of(context).textTheme.titleMedium!.fontSize,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => context.go('/signup'),
+                      )
+                    ]),
+              ),
+              SizedBox(
+                height: size.height * 0.23,
+              ),
+            ],
+          ),
         ),
       ),
     );
