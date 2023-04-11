@@ -21,6 +21,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   final _formKey = GlobalKey<FormState>();
 
+  bool isVisible = true;
+
   @override
   void initState() {
     super.initState();
@@ -66,7 +68,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               CustomTextField(
                 controller: _password,
                 hintText: 'Enter your password..',
-                obscureText: true,
+                obscureText: isVisible,
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isVisible = !isVisible;
+                    });
+                  },
+                  child:
+                      Icon(isVisible ? Icons.visibility : Icons.visibility_off),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';

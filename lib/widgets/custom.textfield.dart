@@ -5,6 +5,7 @@ class CustomTextField extends ConsumerWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final Widget? suffixIcon;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -12,6 +13,7 @@ class CustomTextField extends ConsumerWidget {
     required this.hintText,
     this.validator,
     this.obscureText = false,
+    this.suffixIcon,
   });
 
   @override
@@ -23,6 +25,7 @@ class CustomTextField extends ConsumerWidget {
         obscureText: obscureText,
         validator: validator,
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           hintText: hintText,
           hintStyle: const TextStyle(
             color: Colors.grey,
