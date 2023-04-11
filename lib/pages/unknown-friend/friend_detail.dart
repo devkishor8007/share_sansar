@@ -30,32 +30,6 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Card(
-                //     elevation: 7,
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(
-                //         17,
-                //       ),
-                //     ),
-                //     child: SizedBox(
-                //       width: size.width,
-                //       height: size.height * 0.2,
-                //       child: Column(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           CustomText(
-                //             text: data['name'],
-                //           ),
-                //           CustomText(
-                //             text: data['email'],
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 CustomWidgetPage(data: data),
                 Align(
                   alignment: Alignment.center,
@@ -67,11 +41,11 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                 ),
                 Expanded(
                   child: postList.when(
-                    data: (data) {
-                      if (data.docs.isEmpty) {
+                    data: (postData) {
+                      if (postData.docs.isEmpty) {
                         return Center(
                             child: CustomText(
-                          text: 'You have 0 Post...!!',
+                          text: '${data['name']} has 0 Post...!!',
                           fontSize:
                               Theme.of(context).textTheme.titleMedium!.fontSize,
                           fontWeight: FontWeight.w800,
@@ -81,9 +55,9 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                         height: size.height * 0.8,
                         child: ListView.builder(
                           shrinkWrap: false,
-                          itemCount: data.docs.length,
+                          itemCount: postData.docs.length,
                           itemBuilder: (context, index) {
-                            final date = data.docs[index]['date']!.toDate();
+                            final date = postData.docs[index]['date']!.toDate();
                             final formattedDate =
                                 '${date.year}-${date.month}-${date.day}';
                             return Padding(
@@ -94,11 +68,11 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                                 ),
                                 elevation: 4,
                                 child: SizedBox(
-                                  height:
-                                      data.docs[index]['description']!.length >=
-                                              120
-                                          ? size.height * 0.35
-                                          : size.height * 0.17,
+                                  height: postData.docs[index]['description']!
+                                              .length >=
+                                          120
+                                      ? size.height * 0.35
+                                      : size.height * 0.17,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
@@ -106,7 +80,7 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         CustomText(
-                                          text: data.docs[index]['title'],
+                                          text: postData.docs[index]['title'],
                                           fontWeight: FontWeight.w800,
                                           fontSize: Theme.of(context)
                                               .textTheme
@@ -124,7 +98,8 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                                           height: size.height * 0.015,
                                         ),
                                         CustomText(
-                                          text: data.docs[index]['description']
+                                          text: postData.docs[index]
+                                                  ['description']
                                               .toString(),
                                         ),
                                         const Spacer(),
