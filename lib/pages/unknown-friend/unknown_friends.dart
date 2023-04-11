@@ -55,7 +55,7 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
             },
           );
         },
-        error: (error, stac) => Text(" $error"),
+        error: (error, stackTrace) => Text(" $error"),
         loading: () => const CircularProgressIndicator(),
       ),
     );

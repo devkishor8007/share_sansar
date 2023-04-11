@@ -48,7 +48,7 @@ class FirebaseInitializeRoute extends ConsumerWidget {
       data: (data) {
         return const AuthCheck();
       },
-      error: (e, stackTrace) => Text('$e $stackTrace'),
+      error: (error, stackTrace) => Text('$error'),
       loading: () => const Center(
         child: CircularProgressIndicator(),
       ),

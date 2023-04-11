@@ -15,7 +15,7 @@ class AuthCheck extends ConsumerWidget {
         if (data != null) return const HomePage();
         return const LoginPage();
       },
-      error: (e, stackTrace) => Text('$e $stackTrace'),
+      error: (error, stackTrace) => Text('$error'),
       loading: () => const Center(
         child: CircularProgressIndicator(),
       ),

@@ -189,7 +189,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             },
           );
         },
-        error: (error, stac) => Text(" $error $stac"),
+        error: (error, stackTrace) => Text(" $error"),
         loading: () => const LinearProgressIndicator(),
       ),
     );

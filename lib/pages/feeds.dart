@@ -94,8 +94,8 @@ class _FeedsScreenState extends ConsumerState<FeedsScreen> {
               },
             );
           },
-          error: (error, stac) => Text("$error"),
-          loading: () => const CircularProgressIndicator(),
+          error: (error, stackTrace) => Text("$error"),
+          loading: () => const LinearProgressIndicator(),
         ),
       ),
     );

@@ -117,14 +117,14 @@ class _UnknownFriendDetailState extends ConsumerState<UnknownFriendDetail> {
                         ),
                       );
                     },
-                    error: (error, stac) => Text(" $error $stac"),
+                    error: (error, stackTrace) => Text(" $error"),
                     loading: () => const LinearProgressIndicator(),
                   ),
                 ),
               ],
             );
           },
-          error: (error, stac) => Text(" $error $stac"),
+          error: (error, stackTrace) => Text(" $error"),
           loading: () => const LinearProgressIndicator()),
     );
   }
