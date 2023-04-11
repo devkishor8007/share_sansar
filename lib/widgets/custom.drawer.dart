@@ -70,13 +70,6 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
               leading: const Icon(Icons.people),
               onTap: () {
                 context.go('/unknown-friends');
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (BuildContext context) =>
-                //         const UnKnownFriendPage(),
-                //   ),
-                // );
               }),
           ListTile(
             title: const CustomText(text: 'Logout'),
