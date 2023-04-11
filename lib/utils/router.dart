@@ -8,6 +8,7 @@ import 'package:post_wall/main.dart';
 import 'package:post_wall/pages/auth/login.page.dart';
 import 'package:post_wall/pages/auth/signup.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:post_wall/pages/unknown-friend/unknown_friends.dart';
 
 import '../pages/profile/profile.dart';
 
@@ -39,6 +40,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       path: '/feeds',
       builder: (BuildContext context, GoRouterState state) =>
           const FeedsScreen(),
+    ),
+    GoRoute(
+      path: '/unknown-friends',
+      builder: (BuildContext context, GoRouterState state) =>
+          const UnKnownFriendPage(),
     ),
     GoRoute(
       path: '/profile',

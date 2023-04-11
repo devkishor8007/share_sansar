@@ -5,7 +5,6 @@ import 'package:post_wall/riverpod/auth_riverpod.dart';
 // import 'package:go_router/go_router.dart';
 
 import '../pages/profile/profile.dart';
-import '../pages/unknown-friend/unknown_friends.dart';
 import 'custom.text.dart';
 // import '../pages/profile/profile.dart';
 
@@ -30,9 +29,6 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage('assets/drawer-image.png'),
-                // NetworkImage(
-                //   'https://images.unsplash.com/photo-1680000827936-e5f64dedb249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8Q0R3dXdYSkFiRXd8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-                // ),
               ),
             ),
             child: CustomText(
@@ -60,7 +56,6 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             title: const CustomText(text: 'Profile'),
             leading: const Icon(Icons.person),
             onTap: () {
-              //  context.go('/');
               final data = auth.user;
               Navigator.push(
                 context,
@@ -74,13 +69,14 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
               title: const CustomText(text: 'Friends'),
               leading: const Icon(Icons.people),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        const UnKnownFriendPage(),
-                  ),
-                );
+                context.go('/unknown-friends');
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) =>
+                //         const UnKnownFriendPage(),
+                //   ),
+                // );
               }),
           ListTile(
             title: const CustomText(text: 'Logout'),
