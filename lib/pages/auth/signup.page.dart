@@ -112,6 +112,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                     final data = await auth.createAccount(
                       email: _email.text.trim(),
                       password: _password.text.trim(),
+                      username: _name.text.trim(),
                     );
 
                     final uid = auth.user!.uid;

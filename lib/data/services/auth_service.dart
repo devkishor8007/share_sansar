@@ -7,10 +7,11 @@ class AuthService {
   Stream<User?> get authStateChanges => auth.authStateChanges();
 
   Future<String?> createAccount(
-      {required String email, required String password}) async {
+      {required String email, required String password, required String username}) async {
     try {
       await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: email, password: password );
+        await user!.updateDisplayName(username);
       return 'Thank you for signing up';
     } on FirebaseAuthException catch (error) {
       if (error.code == 'weak-password') {

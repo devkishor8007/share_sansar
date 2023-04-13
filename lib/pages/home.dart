@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:post_wall/widgets/custom.text.dart';
 import 'package:post_wall/widgets/custom.textfield.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 
 import '../riverpod/auth_riverpod.dart';
@@ -176,9 +177,24 @@ class _HomePageState extends ConsumerState<HomePage> {
                             text: data.docs[index]['description'].toString(),
                           ),
                           const Spacer(),
-                          CustomText(
-                            text: formattedDate,
-                            fontWeight: FontWeight.w600,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText(
+                                text: formattedDate,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Share.share(
+                                    "${data.docs[index]['title']}\n${data.docs[index]['description']}\n- ${auth.user!.displayName}",
+                                  );
+                                },
+                                icon: const Icon(
+                                  Icons.share,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
