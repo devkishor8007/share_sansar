@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:post_wall/widgets/custom.appbar.dart';
 import 'package:post_wall/widgets/custom.border.dart';
-// import 'package:post_wall/widgets/custom.text.dart';
 import '../../riverpod/auth_riverpod.dart';
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.drawer.dart';
@@ -21,8 +20,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   Widget build(BuildContext context) {
     final auth = ref.watch(authServiceProvider);
     final dataIsProfile = ref.watch(futureProvider(auth.user!.uid));
-    // Size size = MediaQuery.of(context).size;
-    // print(widget.data!.uid);
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: const CustomAppBar(appBarText: 'Profile'),

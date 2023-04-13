@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:post_wall/data/services/post_service.dart';
+import 'package:post_wall/data/services/auth_service.dart';
 import 'package:post_wall/widgets/custom.text.dart';
 import 'package:post_wall/widgets/custom.textfield.dart';
 import 'package:share_plus/share_plus.dart';
@@ -50,74 +52,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return SizedBox(
-                  height: size.height / 2,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        CustomText(
-                          text: 'What you make feel better...!!',
-                          fontSize:
-                              Theme.of(context).textTheme.titleMedium!.fontSize,
-                          fontWeight: FontWeight.w800,
-                        ),
-                        SizedBox(
-                          height: size.height * 0.009,
-                        ),
-                        CustomTextField(
-                          controller: _title,
-                          hintText: 'title....',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter title';
-                            }
-                            return null;
-                          },
-                        ),
-                        CustomTextField(
-                          controller: _description,
-                          hintText: 'description....',
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter description';
-                            }
-                            return null;
-                          },
-                        ),
-                        CustomButton(
-                          hintText: 'Submit',
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              const uuid = Uuid();
-                              final id = uuid.v4();
-                              await post
-                                  .createPost(
-                                    id: id,
-                                    title: _title.text,
-                                    postBy: auth.user!.uid,
-                                    description: _description.text,
-                                  )
-                                  .then((value) => {
-                                        _title.clear(),
-                                        _description.clear(),
-                                        Navigator.of(context).pop()
-                                      });
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              });
+          showModelWidget(context, size, post, auth);
         },
         child: const Icon(
           Icons.add,
@@ -209,5 +144,80 @@ class _HomePageState extends ConsumerState<HomePage> {
         loading: () => const LinearProgressIndicator(),
       ),
     );
+  }
+
+  Future<dynamic> showModelWidget(
+      BuildContext context, Size size, PostService post, AuthService auth) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SizedBox(
+            height: size.height / 2,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
+                  CustomText(
+                    text: 'What you make feel better...!!',
+                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+                    fontWeight: FontWeight.w800,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.009,
+                  ),
+                  CustomTextField(
+                    controller: _title,
+                    hintText: 'title....',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter title';
+                      } else if (value.length >= 20) {
+                        return 'Please title must be less than 20 words';
+                      }
+                      return null;
+                    },
+                  ),
+                  CustomTextField(
+                    controller: _description,
+                    hintText: 'description....',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter description';
+                      } else if (value.length >= 500) {
+                        return 'Please description must be less than 500 words';
+                      }
+                      return null;
+                    },
+                  ),
+                  CustomButton(
+                    hintText: 'Submit',
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        const uuid = Uuid();
+                        final id = uuid.v4();
+                        await post
+                            .createPost(
+                              id: id,
+                              title: _title.text,
+                              postBy: auth.user!.uid,
+                              description: _description.text,
+                            )
+                            .then((value) => {
+                                  _title.clear(),
+                                  _description.clear(),
+                                  Navigator.of(context).pop()
+                                });
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
