@@ -9,7 +9,6 @@ import 'package:post_wall/pages/auth/login.page.dart';
 import 'package:post_wall/pages/auth/signup.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:post_wall/pages/unknown-friend/unknown_friends.dart';
-
 import '../pages/profile/profile.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {

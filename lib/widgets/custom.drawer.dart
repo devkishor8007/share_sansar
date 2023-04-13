@@ -56,7 +56,7 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             },
           ),
           ListTile(
-              title: const CustomText(text: 'Friends'),
+              title: const CustomText(text: 'Unknown Friends'),
               leading: const Icon(Icons.people),
               onTap: () {
                 context.go('/unknown-friends');

@@ -20,7 +20,7 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
     final otherFriends = ref.watch(userStreamRiverpod);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: const CustomAppBar(appBarText: 'UnKnown-Friend'),
+      appBar: const CustomAppBar(appBarText: 'UnKnown-Friends'),
       drawer: const CustomDrawer(),
       body: otherFriends.when(
         data: (data) {
@@ -45,12 +45,6 @@ class _UnKnownFriendPageState extends ConsumerState<UnKnownFriendPage> {
                   data: data.docs[index],
                   height: size.height * 0.13,
                 ),
-
-                // ListTile(
-                //   title: Text(
-                //     data.docs[index]['email'],
-                //   ),
-                // ),
               );
             },
           );
