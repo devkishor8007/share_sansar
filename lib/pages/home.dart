@@ -184,6 +184,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   CustomTextField(
                     controller: _description,
                     hintText: 'description....',
+                    maxLines: 6,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter description';

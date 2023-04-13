@@ -6,6 +6,7 @@ class CustomTextField extends ConsumerWidget {
   final String hintText;
   final bool obscureText;
   final Widget? suffixIcon;
+  final int? maxLines;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
@@ -14,6 +15,7 @@ class CustomTextField extends ConsumerWidget {
     this.validator,
     this.obscureText = false,
     this.suffixIcon,
+    this.maxLines =1,
   });
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends ConsumerWidget {
         controller: controller,
         obscureText: obscureText,
         validator: validator,
+        maxLines: maxLines,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           hintText: hintText,
