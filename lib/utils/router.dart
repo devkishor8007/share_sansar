@@ -49,7 +49,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     GoRoute(
       path: '/profile',
       builder: (BuildContext context, GoRouterState state) => ProfilePage(
-        data: state.params['data'] as User?,
+        data: state.extra as User,
       ),
     ),
   ]);

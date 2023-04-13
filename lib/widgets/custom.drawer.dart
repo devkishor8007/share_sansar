@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:post_wall/riverpod/auth_riverpod.dart';
-
-import '../pages/profile/profile.dart';
 import 'custom.text.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
@@ -23,7 +21,6 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              // color: Colors.indigo,
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage('assets/drawer-image.png'),
@@ -55,12 +52,7 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             leading: const Icon(Icons.person),
             onTap: () {
               final data = auth.user;
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => ProfilePage(data: data),
-                ),
-              );
+              context.go("/profile", extra: data);
             },
           ),
           ListTile(
