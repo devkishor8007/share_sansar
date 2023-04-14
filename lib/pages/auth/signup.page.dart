@@ -56,7 +56,7 @@ class _SignupPageState extends ConsumerState<SignupPage> {
             children: [
               CustomText(
                 text:
-                    'We are happy that you are a part of our small world...!!',
+                    'We are delighted that you are a member of our close-knit community!!',
                 fontSize: Theme.of(context).textTheme.headlineSmall!.fontSize,
               ),
               SizedBox(

@@ -6,7 +6,6 @@ import 'package:post_wall/widgets/custom.text.dart';
 import 'package:post_wall/widgets/custom.textfield.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
-
 import '../riverpod/auth_riverpod.dart';
 import '../riverpod/post_riverpod.dart';
 import '../widgets/custom.appbar.dart';

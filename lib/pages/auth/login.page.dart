@@ -46,7 +46,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         body: Form(
           key: _formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomText(
                 text: 'Make a shine with us...!!',
