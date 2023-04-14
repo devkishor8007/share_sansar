@@ -1,6 +1,6 @@
 {
-    "name": "post_wall",
-    "short_name": "post_wall",
+    "name": "share_sansar",
+    "short_name": "share_sansar",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

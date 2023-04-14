@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/pages/unknown-friend/friend_detail.dart';
-import 'package:post_wall/riverpod/user_riverpod.dart';
-import 'package:post_wall/widgets/custom.appbar.dart';
+import 'package:share_sansar/pages/unknown-friend/friend_detail.dart';
+import 'package:share_sansar/riverpod/user_riverpod.dart';
+import 'package:share_sansar/widgets/custom.appbar.dart';
 import '../../widgets/custom.border.dart';
 import '../../widgets/custom.drawer.dart';
 

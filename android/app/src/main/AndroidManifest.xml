@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.post_wall">
+    package="com.example.share_sansar">
    <application
-        android:label="post_wall"
+        android:label="share_sansar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

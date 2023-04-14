@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/data/services/post_service.dart';
-import 'package:post_wall/data/services/auth_service.dart';
-import 'package:post_wall/widgets/custom.text.dart';
-import 'package:post_wall/widgets/custom.textfield.dart';
+import 'package:share_sansar/data/services/post_service.dart';
+import 'package:share_sansar/data/services/auth_service.dart';
+import 'package:share_sansar/widgets/custom.text.dart';
+import 'package:share_sansar/widgets/custom.textfield.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 import '../riverpod/auth_riverpod.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/pages/home.dart';
-import 'package:post_wall/pages/auth/login.page.dart';
-import 'package:post_wall/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/pages/home.dart';
+import 'package:share_sansar/pages/auth/login.page.dart';
+import 'package:share_sansar/riverpod/auth_riverpod.dart';
 
 class AuthCheck extends ConsumerWidget {
   const AuthCheck({super.key});

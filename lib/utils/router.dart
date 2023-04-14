@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:post_wall/app.dart';
-import 'package:post_wall/pages/feeds.dart';
-import 'package:post_wall/pages/home.dart';
-import 'package:post_wall/main.dart';
-import 'package:post_wall/pages/auth/login.page.dart';
-import 'package:post_wall/pages/auth/signup.page.dart';
+import 'package:share_sansar/app.dart';
+import 'package:share_sansar/pages/feeds.dart';
+import 'package:share_sansar/pages/home.dart';
+import 'package:share_sansar/main.dart';
+import 'package:share_sansar/pages/auth/login.page.dart';
+import 'package:share_sansar/pages/auth/signup.page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:post_wall/pages/unknown-friend/unknown_friends.dart';
+import 'package:share_sansar/pages/unknown-friend/unknown_friends.dart';
 import '../pages/profile/profile.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {

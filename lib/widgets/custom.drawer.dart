@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:post_wall/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/riverpod/auth_riverpod.dart';
 import 'custom.text.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {

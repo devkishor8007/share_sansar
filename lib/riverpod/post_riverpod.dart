@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/data/models/post.model.dart';
-import 'package:post_wall/data/services/post_service.dart';
+import 'package:share_sansar/data/models/post.model.dart';
+import 'package:share_sansar/data/services/post_service.dart';
 
 final postRiverpod = Provider<PostService>((ref) => PostService());
 final firestoreProvider =

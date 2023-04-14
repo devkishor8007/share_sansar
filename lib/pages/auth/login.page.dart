@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:post_wall/riverpod/auth_riverpod.dart';
-import 'package:post_wall/widgets/custom.text.dart';
+import 'package:share_sansar/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/widgets/custom.text.dart';
 import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
 

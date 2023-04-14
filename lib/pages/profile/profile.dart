@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/widgets/custom.appbar.dart';
-import 'package:post_wall/widgets/custom.border.dart';
+import 'package:share_sansar/widgets/custom.appbar.dart';
+import 'package:share_sansar/widgets/custom.border.dart';
 import '../../riverpod/auth_riverpod.dart';
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.drawer.dart';

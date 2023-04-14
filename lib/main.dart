@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/app.dart';
-import 'package:post_wall/firebase_options.dart';
-import 'package:post_wall/utils/router.dart';
+import 'package:share_sansar/app.dart';
+import 'package:share_sansar/firebase_options.dart';
+import 'package:share_sansar/utils/router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

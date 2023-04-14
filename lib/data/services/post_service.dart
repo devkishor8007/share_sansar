@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:post_wall/data/models/post.model.dart';
+import 'package:share_sansar/data/models/post.model.dart';
 
 class PostService {
   static final CollectionReference firebaseFirestore =

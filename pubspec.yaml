@@ -1,4 +1,4 @@
-name: post_wall
+name: share_sansar
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -28,10 +28,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  cloud_firestore: ^4.4.5
-  cupertino_icons: ^1.0.2
-  firebase_auth: ^4.3.0
-  firebase_core: ^2.8.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.3.2
@@ -39,6 +35,10 @@ dependencies:
   google_fonts: ^4.0.3
   share_plus: ^6.3.2
   uuid: ^3.0.7
+  cloud_firestore: ^4.4.5
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.3.0
+  firebase_core: ^2.8.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

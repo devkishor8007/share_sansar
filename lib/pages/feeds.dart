@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:post_wall/data/models/post.model.dart';
-import 'package:post_wall/riverpod/auth_riverpod.dart';
-import 'package:post_wall/widgets/custom.appbar.dart';
-import 'package:post_wall/widgets/custom.text.dart';
+import 'package:share_sansar/data/models/post.model.dart';
+import 'package:share_sansar/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/widgets/custom.appbar.dart';
+import 'package:share_sansar/widgets/custom.text.dart';
 
 import '../riverpod/post_riverpod.dart';
 import '../widgets/custom.drawer.dart';
