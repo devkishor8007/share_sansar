@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:share_sansar/utils/color.dart';
 
 class CustomTextField extends ConsumerWidget {
   final TextEditingController controller;
@@ -15,7 +16,7 @@ class CustomTextField extends ConsumerWidget {
     this.validator,
     this.obscureText = false,
     this.suffixIcon,
-    this.maxLines =1,
+    this.maxLines = 1,
   });
 
   @override
@@ -31,11 +32,11 @@ class CustomTextField extends ConsumerWidget {
           suffixIcon: suffixIcon,
           hintText: hintText,
           hintStyle: const TextStyle(
-            color: Colors.grey,
+            color: AppColor.greyColor,
           ),
           border: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.green,
+              color: AppColor.greenColor,
               width: 1.0,
             ),
             borderRadius: BorderRadius.all(
@@ -44,7 +45,7 @@ class CustomTextField extends ConsumerWidget {
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.green,
+              color: AppColor.greenColor,
               width: 1.0,
             ),
             borderRadius: BorderRadius.all(
@@ -53,7 +54,7 @@ class CustomTextField extends ConsumerWidget {
           ),
           errorBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.red,
+              color: AppColor.redColor,
               width: 1.0,
             ),
             borderRadius: BorderRadius.all(
@@ -62,7 +63,7 @@ class CustomTextField extends ConsumerWidget {
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.green,
+              color: AppColor.greenColor,
               width: 1.0,
             ),
             borderRadius: BorderRadius.all(

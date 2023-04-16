@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/utils/color.dart';
 import 'custom.text.dart';
 
 class CustomDrawer extends ConsumerStatefulWidget {
@@ -28,7 +29,7 @@ class _CustomDrawerState extends ConsumerState<CustomDrawer> {
             ),
             child: CustomText(
               text: 'POST WALL',
-              color: Colors.white,
+              color: AppColor.whiteColor,
               fontWeight: FontWeight.w700,
               fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
             ),

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
+import 'package:share_sansar/utils/color.dart';
 import 'package:share_sansar/widgets/custom.text.dart';
 import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
@@ -112,7 +113,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 text: TextSpan(
                     text: 'If you don\'t have an account',
                     style: GoogleFonts.lato(
-                      color: Colors.black,
+                      color: AppColor.blackColor,
                       fontWeight: FontWeight.w700,
                       fontSize:
                           Theme.of(context).textTheme.titleMedium!.fontSize,
@@ -121,7 +122,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       TextSpan(
                         text: '   Signup',
                         style: GoogleFonts.lato(
-                          color: Colors.indigo,
+                          color: AppColor.indigoColor,
                           fontWeight: FontWeight.w700,
                           fontSize:
                               Theme.of(context).textTheme.titleMedium!.fontSize,

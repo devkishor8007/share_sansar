@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_sansar/app.dart';
 import 'package:share_sansar/firebase_options.dart';
+import 'package:share_sansar/utils/color.dart';
 import 'package:share_sansar/utils/router.dart';
 
 Future<void> main() async {
@@ -31,7 +32,7 @@ class MyApp extends ConsumerWidget {
       title: 'Flutter Demo',
       routerConfig: goRouter,
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: AppColor.indigoMaterialColor,
       ),
     );
   }

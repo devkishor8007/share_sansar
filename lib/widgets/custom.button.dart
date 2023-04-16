@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_sansar/utils/color.dart';
 
 class CustomButton extends ConsumerWidget {
   final void Function()? onPressed;
@@ -13,7 +14,7 @@ class CustomButton extends ConsumerWidget {
     Size size = MediaQuery.of(context).size;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.indigo,
+        backgroundColor: AppColor.indigoColor,
         minimumSize: Size(
           size.width * 0.3,
           size.height * 0.06,

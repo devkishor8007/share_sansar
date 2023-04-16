@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_sansar/data/services/post_service.dart';
 import 'package:share_sansar/data/services/auth_service.dart';
+import 'package:share_sansar/utils/color.dart';
 import 'package:share_sansar/widgets/custom.text.dart';
 import 'package:share_sansar/widgets/custom.textfield.dart';
 import 'package:share_plus/share_plus.dart';
@@ -128,7 +129,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         duration: const Duration(seconds: 2),
-                                        backgroundColor: Colors.red,
+                                        backgroundColor: AppColor.redColor,
                                         content: Text(
                                             'deleted ${data.docs[index]['title']}'),
                                       ),
