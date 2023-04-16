@@ -11,6 +11,7 @@ I hope you are all doing well. I am excited to share my latest project, where I 
 - View all unknown users with posts
 - Proper input validation
 - Posts can only be shared by the user who created them
+- Only the user who created a post has the ability to delete
 - App Icon Change
 
 ## Outputs
