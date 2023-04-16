@@ -3,15 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_sansar/data/services/post_service.dart';
 import 'package:share_sansar/data/services/auth_service.dart';
 import 'package:share_sansar/utils/color.dart';
-import 'package:share_sansar/widgets/custom.text.dart';
-import 'package:share_sansar/widgets/custom.textfield.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 import '../riverpod/auth_riverpod.dart';
 import '../riverpod/post_riverpod.dart';
-import '../widgets/custom.appbar.dart';
-import '../widgets/custom.button.dart';
-import '../widgets/custom.drawer.dart';
+import '../widgets/index.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

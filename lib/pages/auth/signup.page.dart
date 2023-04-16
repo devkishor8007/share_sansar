@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
-
-
+import '../../widgets/index.dart';
 import '../../riverpod/user_riverpod.dart';
-import '../../widgets/custom.button.dart';
-import '../../widgets/custom.richtext.dart';
-import '../../widgets/custom.text.dart';
-import '../../widgets/custom.textfield.dart';
 
 class SignupPage extends ConsumerStatefulWidget {
   const SignupPage({super.key});

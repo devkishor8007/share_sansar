@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
-import 'package:share_sansar/widgets/custom.richtext.dart';
-import 'package:share_sansar/widgets/custom.text.dart';
-import '../../widgets/custom.button.dart';
-import '../../widgets/custom.textfield.dart';
+import '../../widgets/index.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});

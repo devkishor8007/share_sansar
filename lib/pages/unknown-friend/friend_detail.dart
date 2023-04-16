@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_sansar/widgets/custom.appbar.dart';
-import 'package:share_sansar/widgets/custom.border.dart';
-
+import '../../widgets/index.dart';
 import '../../riverpod/post_riverpod.dart';
 import '../../riverpod/user_riverpod.dart';
-import '../../widgets/custom.text.dart';
 
 class UnknownFriendDetail extends ConsumerStatefulWidget {
   final String userId;
