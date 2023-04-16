@@ -1,10 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
-import 'package:share_sansar/utils/color.dart';
+import 'package:share_sansar/widgets/custom.richtext.dart';
 import 'package:share_sansar/widgets/custom.text.dart';
 import '../../widgets/custom.button.dart';
 import '../../widgets/custom.textfield.dart';
@@ -109,29 +106,34 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               SizedBox(
                 height: size.height * 0.06,
               ),
-              RichText(
-                text: TextSpan(
-                    text: 'If you don\'t have an account',
-                    style: GoogleFonts.lato(
-                      color: AppColor.blackColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize:
-                          Theme.of(context).textTheme.titleMedium!.fontSize,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: '   Signup',
-                        style: GoogleFonts.lato(
-                          color: AppColor.indigoColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize:
-                              Theme.of(context).textTheme.titleMedium!.fontSize,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => context.go('/signup'),
-                      )
-                    ]),
-              ),
+              const CustomRichText(
+                  routeName: '/signup',
+                  questionText: 'If you don\'t have an account',
+                  nameTextButton: '   Signup'),
+              // RichText(
+              //   text: TextSpan(
+              //       text: 'If you don\'t have an account',
+              //       style: GoogleFonts.lato(
+              //         color: AppColor.blackColor,
+              //         fontWeight: FontWeight.w700,
+              //         fontSize:
+              //             Theme.of(context).textTheme.titleMedium!.fontSize,
+              //       ),
+              //       children: [
+              //         TextSpan(
+              //           text: '   Signup',
+              //           style: GoogleFonts.lato(
+              //             color: AppColor.indigoColor,
+              //             fontWeight: FontWeight.w700,
+              //             fontSize:
+              //                 Theme.of(context).textTheme.titleMedium!.fontSize,
+              //           ),
+              //           recognizer: TapGestureRecognizer()
+              //             ..onTap = () => context.go('/signup'),
+              //         )
+              //       ]),
+              // ),
+
               SizedBox(
                 height: size.height * 0.23,
               ),

@@ -1,13 +1,12 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share_sansar/riverpod/auth_riverpod.dart';
-import 'package:share_sansar/utils/color.dart';
+
 
 import '../../riverpod/user_riverpod.dart';
 import '../../widgets/custom.button.dart';
+import '../../widgets/custom.richtext.dart';
 import '../../widgets/custom.text.dart';
 import '../../widgets/custom.textfield.dart';
 
@@ -139,29 +138,34 @@ class _SignupPageState extends ConsumerState<SignupPage> {
               SizedBox(
                 height: size.height * 0.06,
               ),
-              RichText(
-                text: TextSpan(
-                    text: 'If you have an account',
-                    style: GoogleFonts.lato(
-                      color: AppColor.blackColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize:
-                          Theme.of(context).textTheme.titleMedium!.fontSize,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: '   Login',
-                        style: GoogleFonts.lato(
-                          color: AppColor.indigoColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize:
-                              Theme.of(context).textTheme.titleMedium!.fontSize,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => context.go('/login'),
-                      )
-                    ]),
-              ),
+              const CustomRichText(
+                  routeName: '/login',
+                  questionText: 'If you have an account',
+                  nameTextButton: '   Login'),
+              // RichText(
+              //   text: TextSpan(
+              //       text: 'If you have an account',
+              //       style: GoogleFonts.lato(
+              //         color: AppColor.blackColor,
+              //         fontWeight: FontWeight.w700,
+              //         fontSize:
+              //             Theme.of(context).textTheme.titleMedium!.fontSize,
+              //       ),
+              //       children: [
+              //         TextSpan(
+              //           text: '   Login',
+              //           style: GoogleFonts.lato(
+              //             color: AppColor.indigoColor,
+              //             fontWeight: FontWeight.w700,
+              //             fontSize:
+              //                 Theme.of(context).textTheme.titleMedium!.fontSize,
+              //           ),
+              //           recognizer: TapGestureRecognizer()
+              //             ..onTap = () => context.go('/login'),
+              //         )
+              //       ]),
+              // ),
+
               SizedBox(
                 height: size.height * 0.001,
               ),
