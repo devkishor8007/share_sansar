@@ -25,4 +25,13 @@ class PostService {
       return "error";
     }
   }
+
+  Future<bool> deletePost({required String id}) async {
+    try {
+      await firebaseFirestore.doc(id).delete();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
 }

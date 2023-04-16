@@ -83,7 +83,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   child: SizedBox(
                     height: data.docs[index]['description']!.length >= 120
                         ? size.height * 0.35
-                        : size.height * 0.17,
+                        : size.height * 0.2,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -117,6 +117,27 @@ class _HomePageState extends ConsumerState<HomePage> {
                               CustomText(
                                 text: formattedDate,
                                 fontWeight: FontWeight.w600,
+                              ),
+                              IconButton(
+                                onPressed: () async {
+                                  final isDelete = await post.deletePost(
+                                      id: data.docs[index]['id']);
+
+                                  if (!mounted) return;
+                                  if (isDelete) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        duration: const Duration(seconds: 2),
+                                        backgroundColor: Colors.red,
+                                        content: Text(
+                                            'deleted ${data.docs[index]['title']}'),
+                                      ),
+                                    );
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.delete,
+                                ),
                               ),
                               IconButton(
                                 onPressed: () {
